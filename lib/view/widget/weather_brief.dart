@@ -75,14 +75,18 @@ class WeatherBrief extends StatelessWidget {
               )
             ],
           ),
+/*
           Row(
             children: [
-              ListView(
-                scrollDirection: Axis.horizontal,
-                children: [],
+              Expanded(
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [],
+                ),
               )
             ],
           )
+*/
         ],
       ),
     );
