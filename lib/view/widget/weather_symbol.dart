@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class WeatherSymbol extends StatelessWidget {
-  const WeatherSymbol({Key key}) : super(key: key);
+  final String _weatherState;
+
+  const WeatherSymbol({@required String weatherState, Key key})
+      : _weatherState = weatherState,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
