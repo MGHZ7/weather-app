@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/view/widget/weather_brief.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(body: WeatherBrief());
   }
 }
