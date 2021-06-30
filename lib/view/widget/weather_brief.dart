@@ -1,9 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/view/widget/weather_symbol.dart';
 
 class WeatherBrief extends StatelessWidget {
   final String _weatherDescription = 'It\'s raining now';
-  const WeatherBrief({Key key}) : super(key: key);
+  final String _city;
+  final int _temperature;
+
+  const WeatherBrief({String city, int temperature, Key key})
+      : _city = city ?? 'City',
+        _temperature = temperature ?? 0,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +41,48 @@ class WeatherBrief extends StatelessWidget {
               )
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    _city,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _temperature.toString(),
+                        style: Theme.of(context).textTheme.headline2,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 8),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 2)),
+                        width: 10,
+                        height: 10,
+                      )
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          Row(
+            children: [
+              ListView(
+                scrollDirection: Axis.horizontal,
+                children: [],
+              )
+            ],
+          )
         ],
       ),
     );
