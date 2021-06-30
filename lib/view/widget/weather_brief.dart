@@ -17,77 +17,74 @@ class WeatherBrief extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
       color: Colors.amber.shade600,
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 1,
-                child: Text(
-                  _weatherDescription,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-              Flexible(flex: 2, child: Container())
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              WeatherSymbol(
-                weatherState: 'raining',
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    _city,
-                    style: Theme.of(context).textTheme.headline5,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Text(
+                    _weatherDescription,
+                    style: Theme.of(context).textTheme.headline4,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        _temperature.toString(),
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 8),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 2)),
-                        width: 10,
-                        height: 10,
-                      )
-                    ],
-                  )
-                ],
-              )
-            ],
-          ),
-/*
-          Row(
-            children: [
-              Expanded(
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [],
                 ),
-              )
-            ],
-          )
-*/
-        ],
+                Flexible(flex: 2, child: Container())
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                WeatherSymbol(
+                  weatherState: 'raining',
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      _city,
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _temperature.toString(),
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 8),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 2)),
+                          width: 10,
+                          height: 10,
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 200),
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
