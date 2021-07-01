@@ -11,8 +11,8 @@ class WeatherSymbol extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Image.asset(
-          'asset/image/weather_symbol/$_weatherState.png',
+        child: Image.network(
+          'https://openweathermap.org/img/wn/10d@2x.png',
           fit: BoxFit.contain,
           alignment: Alignment.center,
           width: 300.0,
