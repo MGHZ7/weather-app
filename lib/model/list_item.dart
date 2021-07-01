@@ -9,6 +9,6 @@ class ListItem {
   ListItem.formJson(Map<String, dynamic> json) {
     dt = json['dt'];
     main = Main.fromJson(json['main']);
-    weather = Weather.fromJson(json['weather']);
+    weather = Weather.fromJson(json['weather'][0]);
   }
 }

@@ -21,15 +21,15 @@ class Main {
       this.tempKf});
 
   Main.fromJson(Map<String, dynamic> json) {
-    temp = json['temp'];
+    temp = json['temp'].toDouble();
     feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
+    tempMin = json['temp_min'].toDouble();
+    tempMax = json['temp_max'].toDouble();
     pressure = json['pressure'];
     seaLevel = json['sea_level'];
     grndLevel = json['grnd_level'];
     humidity = json['humidity'];
-    tempKf = json['temp_kf'];
+    tempKf = json['temp_kf'].toDouble();
   }
 
   Map<String, dynamic> toJson() {

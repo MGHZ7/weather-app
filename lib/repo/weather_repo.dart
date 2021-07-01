@@ -7,16 +7,15 @@ import 'package:weather_app/utils/data.dart';
 class WeatherRepo {
   final _apiService = ApiService();
 
-  final forecastEndPoint =
+  final _forecastEndPoint =
       'forecast?id=292223&appid=4343555b136db241cb08c95659de76cb';
 
   Future<Data<Forecast>> fetchForecast() async {
-    try {
-      final response = await _apiService.request(
-          requestType: RequestType.GET, endPoint: forecastEndPoint);
-      final json = jsonDecode(response);
-      return Data<Forecast>.success(Forecast.fromJson(json));
-    } catch (e) {
+    final response = await _apiService.request(
+        requestType: RequestType.GET, endPoint: _forecastEndPoint);
+    final json = jsonDecode(response);
+    return Data<Forecast>.success(Forecast.fromJson(json));
+    try {} catch (e) {
       Data.handleException(e);
     }
   }
