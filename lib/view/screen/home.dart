@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:weather_app/bloc/weather_home_bloc.dart';
 import 'package:weather_app/model/forcast.dart';
 import 'package:weather_app/utils/data.dart';
+import 'package:weather_app/view/widget/error_message.dart';
 import 'package:weather_app/view/widget/weather_brief.dart';
 
 class Home extends StatelessWidget {
@@ -35,15 +36,7 @@ class Home extends StatelessWidget {
             );
           }
           // Case of error
-          return Center(
-            child: Container(
-              color: Theme.of(context).colorScheme.error,
-              child: Text(
-                bloc.forecast.message,
-                style: Theme.of(context).textTheme.headline2,
-              ),
-            ),
-          );
+          return ErrorMessage(message: bloc.forecast.message);
         },
       ),
     ));
