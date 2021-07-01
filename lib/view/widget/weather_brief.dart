@@ -28,8 +28,8 @@ class WeatherBrief extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 32),
       color: Colors.amber.shade600,
+      padding: const EdgeInsets.symmetric(vertical: 32),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,

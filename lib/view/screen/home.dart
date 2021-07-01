@@ -11,7 +11,9 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(
+    return Scaffold(
+        body: Container(
+      height: double.infinity,
       child: Consumer<WeatherHomeBloc>(
         builder: (context, bloc, child) {
           // Case of no data
@@ -27,9 +29,9 @@ class Home extends StatelessWidget {
 
             return WeatherBrief(
               city: forecast.city.name,
-              temperature: forecast.list[0].main.temp.toInt(),
+              temperature: bloc.selectedDay.main.temp.toInt(),
               daysAfter: bloc.daysAfter,
-              description: forecast.list[0].weather.description,
+              description: bloc.selectedDay.weather.description,
               weatherState: bloc
                   .checkWeatherState(forecast.list[0].weather.main)
                   .toString(),

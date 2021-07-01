@@ -10,9 +10,12 @@ class WeatherHomeBloc extends ChangeNotifier {
 
   List<ListItem> _weatherForDaysAfter;
 
+  ListItem selectedDay;
+
   void fetchForecast() async {
     forecast = await _weatherRepo.fetchForecast();
     getWeathersForDaysAfter();
+    selectedDay = daysAfter[0];
     notifyListeners();
   }
 
