@@ -38,7 +38,7 @@ class WeatherDayCard extends StatelessWidget {
       ),
       onTap: () {
         final bloc = context.read<WeatherHomeBloc>();
-        // Cancel navigation if the user have chosen the same date
+        // Cancel navigation if the user has chosen the same date
         if (_dayForecast.dt == bloc.selectedDay.dt) {
           return;
         }
