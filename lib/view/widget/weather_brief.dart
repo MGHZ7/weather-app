@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/model/list_item.dart';
+import 'package:weather_app/utils/date_time_util.dart';
 import 'package:weather_app/view/widget/weather_day_card.dart';
 import 'package:weather_app/view/widget/weather_symbol.dart';
 
@@ -10,6 +11,7 @@ class WeatherBrief extends StatelessWidget {
   final String _city;
   final int _temperature;
   final List<ListItem> _daysAfter;
+  final DateTime _date;
 
   const WeatherBrief(
       {String city,
@@ -17,12 +19,14 @@ class WeatherBrief extends StatelessWidget {
       List<ListItem> daysAfter,
       String description,
       String weatherState,
+      DateTime date,
       Key key})
       : _city = city ?? 'City',
         _temperature = temperature ?? 0,
         _weatherDescription = description ?? 'It\'s raining now',
         _daysAfter = daysAfter,
         _weatherState = weatherState,
+        _date = date,
         super(key: key);
 
   @override
@@ -48,7 +52,13 @@ class WeatherBrief extends StatelessWidget {
                     ),
                   ),
                 ),
-                Flexible(flex: 2, child: Container())
+                Flexible(
+                    flex: 2,
+                    child: Container(
+                      padding: const EdgeInsets.only(right: 24),
+                      alignment: Alignment.topRight,
+                      child: Text(DateTimeUtils.formatDate(_date)),
+                    ))
               ],
             ),
             Row(

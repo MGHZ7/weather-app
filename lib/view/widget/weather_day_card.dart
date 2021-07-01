@@ -38,7 +38,13 @@ class WeatherDayCard extends StatelessWidget {
       ),
       onTap: () {
         final bloc = context.read<WeatherHomeBloc>();
+        // Tell bloc to use selected day data
         bloc.selectedDay = _dayForecast;
+        // Pop any other opened route
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+        // Open day data in a new route
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           return ChangeNotifierProvider.value(
             value: bloc,

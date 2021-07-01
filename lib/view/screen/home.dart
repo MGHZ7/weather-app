@@ -28,14 +28,15 @@ class Home extends StatelessWidget {
             Forecast forecast = bloc.forecast.data;
 
             return WeatherBrief(
-              city: forecast.city.name,
-              temperature: bloc.selectedDay.main.temp.toInt(),
-              daysAfter: bloc.daysAfter,
-              description: bloc.selectedDay.weather.description,
-              weatherState: bloc
-                  .checkWeatherState(forecast.list[0].weather.main)
-                  .toString(),
-            );
+                city: forecast.city.name,
+                temperature: bloc.selectedDay.main.temp.toInt(),
+                daysAfter: bloc.daysAfter,
+                description: bloc.selectedDay.weather.description,
+                weatherState: bloc
+                    .checkWeatherState(forecast.list[0].weather.main)
+                    .toString(),
+                date: DateTime.fromMillisecondsSinceEpoch(
+                    bloc.selectedDay.dt * 1000));
           }
           // Case of error
           return ErrorMessage(message: bloc.forecast.message);
