@@ -10,15 +10,13 @@ class ApiService {
   final String apiKey = '4343555b136db241cb08c95659de76cb';
 
   static final ApiService _instance = ApiService._internal();
-  final String baseUrl = "https://46.227.254.20:5009/api/iread";
+  final String baseUrl = "https://api.openweathermap.org/data/2.5/";
 
   factory ApiService() => _instance;
 
   ApiService._internal();
 
   final Client _client = Client();
-  final String testAuthKey =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZSI6IkJpZGRlciIsImp0aSI6ImE0ZDAzNzc1LWU3YmUtNDM0YS04NjRmLWJkNzRhNDY1ODhkZiIsImV4cCI6MTYxNjUwNTAzMywiaXNzIjoiaHR0cHMvL2xvY2FsaG9zdDo0NDMzOC8iLCJhdWQiOiJodHRwcy8vbG9jYWxob3N0OjQ0MzM4LyJ9.wlSMq8ldhDdfAWsyUPd035m0gTJYIXTbN6mNNBDo1C4";
 
   final Map<int, String> HTTP_REQUEST_STATE_CODE = {
     200: "Ok",
@@ -41,7 +39,6 @@ class ApiService {
         return await _processResponse(await _client.post(url,
             headers: {
               "Content-Type": "application/json",
-              "Authorization": testAuthKey
             },
             body: json.encode(parameter)));
       case RequestType.DELETE:
