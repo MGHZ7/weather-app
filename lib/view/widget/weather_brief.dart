@@ -1,15 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/model/list_item.dart';
+import 'package:weather_app/view/widget/weather_day_card.dart';
 import 'package:weather_app/view/widget/weather_symbol.dart';
 
 class WeatherBrief extends StatelessWidget {
-  final String _weatherDescription = 'It\'s raining now';
+  final String _weatherState;
+  final String _weatherDescription;
   final String _city;
   final int _temperature;
+  final List<ListItem> _daysAfter;
 
-  const WeatherBrief({String city, int temperature, Key key})
+  const WeatherBrief(
+      {String city,
+      int temperature,
+      List<ListItem> daysAfter,
+      String description,
+      String weatherState,
+      Key key})
       : _city = city ?? 'City',
         _temperature = temperature ?? 0,
+        _weatherDescription = description ?? 'It\'s raining now',
+        _daysAfter = daysAfter,
+        _weatherState = weatherState,
         super(key: key);
 
   @override
@@ -38,7 +51,7 @@ class WeatherBrief extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 WeatherSymbol(
-                  weatherState: 'raining',
+                  weatherState: _weatherState,
                 )
               ],
             ),
@@ -78,9 +91,19 @@ class WeatherBrief extends StatelessWidget {
             ),
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 200),
-              child: ListView(
+              child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                children: [],
+                itemBuilder: (context, index) {
+                  return WeatherDayCard(
+                    dayForecast: _daysAfter[index],
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    width: 18,
+                  );
+                },
+                itemCount: _daysAfter.length,
               ),
             )
           ],

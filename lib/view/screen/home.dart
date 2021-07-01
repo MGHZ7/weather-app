@@ -26,6 +26,12 @@ class Home extends StatelessWidget {
 
             return WeatherBrief(
               city: forecast.city.name,
+              temperature: forecast.list[0].main.temp.toInt(),
+              daysAfter: bloc.daysAfter,
+              description: forecast.list[0].weather.description,
+              weatherState: bloc
+                  .checkWeatherState(forecast.list[0].weather.main)
+                  .toString(),
             );
           }
           // Case of error
