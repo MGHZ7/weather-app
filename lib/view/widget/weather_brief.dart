@@ -28,7 +28,7 @@ class WeatherBrief extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 32),
       color: Colors.amber.shade600,
       child: SingleChildScrollView(
         child: Column(
@@ -39,9 +39,13 @@ class WeatherBrief extends StatelessWidget {
               children: [
                 Flexible(
                   flex: 1,
-                  child: Text(
-                    _weatherDescription,
-                    style: Theme.of(context).textTheme.headline4,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 32, horizontal: 24),
+                    child: Text(
+                      _weatherDescription,
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   ),
                 ),
                 Flexible(flex: 2, child: Container())
@@ -95,6 +99,7 @@ class WeatherBrief extends StatelessWidget {
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 150),
               child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return WeatherDayCard(
