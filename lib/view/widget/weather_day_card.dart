@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/model/list_item.dart';
-import 'package:weather_app/utils/date_time_util.dart';
 
 class WeatherDayCard extends StatelessWidget {
   final ListItem _dayForecast;
@@ -27,8 +26,9 @@ class WeatherDayCard extends StatelessWidget {
           SizedBox(
             height: 24,
           ),
-          Text(DateTimeUtils.formatDate(
-              DateTime.fromMillisecondsSinceEpoch(_dayForecast.dt)))
+          Text(DateTime.fromMillisecondsSinceEpoch(_dayForecast.dt * 1000)
+              .day
+              .toString())
         ],
       ),
     );
