@@ -32,7 +32,7 @@ class WeatherBrief extends StatelessWidget {
       color: Colors.amber.shade600,
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -89,8 +89,11 @@ class WeatherBrief extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(
+              height: 18,
+            ),
             ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: 200),
+              constraints: BoxConstraints(maxHeight: 150),
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
